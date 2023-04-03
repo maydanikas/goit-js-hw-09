@@ -3,6 +3,7 @@ const stopBtnEl = document.querySelector('[data-stop]');
 const bodyEl = document.body;
 
 // console.log(getRandomHexColor());
+let colorSwitch;
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
@@ -11,7 +12,7 @@ function getRandomHexColor() {
 }
 
 startBtnEl.addEventListener('click', () => {
-  const colorSwitch = setInterval(() => {
+  colorSwitch = setInterval(() => {
     startBtnEl.disabled = true;
     bodyEl.style.backgroundColor = getRandomHexColor();
   }, 1000);
