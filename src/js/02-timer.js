@@ -9,9 +9,6 @@ const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 
-// console.log(startBtnEl);
-
-///////////////SETTING flatpickr////////////////
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -21,7 +18,7 @@ const options = {
   onClose(selectedDates) {
     deadline = selectedDates[0];
     console.log(deadline);
-    ///////////CHECK SELECTED DATE////////////////
+
     if (deadline <= options.defaultDate) {
       Notiflix.Notify.failure('Please choose a date in the future');
       startBtnEl.disabled = true;
@@ -30,9 +27,7 @@ const options = {
     startBtnEl.disabled = false;
   },
 };
-///////////////////////////////////////////////
 
-////////////////TIMER/////////////////////////
 const timer = {
   start() {
     this.intervalId = setInterval(() => {
@@ -44,12 +39,10 @@ const timer = {
       }
 
       let { days, hours, minutes, seconds } = this.getTimeComponents(diff);
-      /////////////////RENDERING TIMER/////////////
       daysEl.textContent = this.pad(days);
       hoursEl.textContent = this.pad(hours);
       minutesEl.textContent = this.pad(minutes);
       secondsEl.textContent = this.pad(seconds);
-      ////////////////////////////////////
     }, 1000);
   },
 
@@ -58,7 +51,6 @@ const timer = {
     console.log('timer stopped');
   },
 
-  ///////////CALCULATING TIME UNITS FROM TOTAL MS///
   getTimeComponents(diff) {
     const days = Math.floor(diff / 1000 / 60 / 60 / 24);
     const hours = Math.floor(diff / 1000 / 60 / 60) % 24;
@@ -77,9 +69,6 @@ const timer = {
     return String(value).padStart(2, '0');
   },
 };
-//////////////////////////////////////////////
-
-//////////////////////////////////////////////
 
 startBtnEl.addEventListener('click', () => {
   console.log('OK');
