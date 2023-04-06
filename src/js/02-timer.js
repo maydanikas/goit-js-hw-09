@@ -4,6 +4,10 @@ import Notiflix from 'notiflix';
 
 const startBtnEl = document.querySelector('[data-start]');
 let deadline;
+const daysEl = document.querySelector('[data-days]');
+const hoursEl = document.querySelector('[data-hours]');
+const minutesEl = document.querySelector('[data-minutes]');
+const secondsEl = document.querySelector('[data-seconds]');
 
 // console.log(startBtnEl);
 
@@ -41,10 +45,10 @@ const timer = {
 
       let { days, hours, minutes, seconds } = this.getTimeComponents(diff);
       /////////////////RENDERING TIMER/////////////
-      document.querySelector('[data-days]').innerHTML = this.pad(days);
-      document.querySelector('[data-hours]').innerHTML = this.pad(hours);
-      document.querySelector('[data-minutes]').innerHTML = this.pad(minutes);
-      document.querySelector('[data-seconds]').innerHTML = this.pad(seconds);
+      daysEl.textContent = this.pad(days);
+      hoursEl.textContent = this.pad(hours);
+      minutesEl.textContent = this.pad(minutes);
+      secondsEl.textContent = this.pad(seconds);
       ////////////////////////////////////
     }, 1000);
   },
